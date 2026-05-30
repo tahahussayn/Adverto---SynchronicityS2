@@ -1,13 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import CursorEffect from "@/components/CursorEffect";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 import { TypewriterText } from "@/components/ui/typewriter";
 
 export default function Home() {
   return (
     <div className="antialiased min-h-screen flex flex-col selection:bg-electric-blue selection:text-white">
-      <CursorEffect />
       <header className="bg-background/80 backdrop-blur-md fixed top-0 w-full z-50 border-b border-surface-container-highest shadow-sm">
         <div className="flex justify-between items-center px-md py-sm max-w-7xl mx-auto">
           {/* Brand */}
