@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Adverto - Sign In</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#c4c7c7",
+                        "tertiary-fixed": "#e6e1df",
+                        "surface-container-highest": "#353434",
+                        "primary-fixed": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#484645",
+                        "on-primary-container": "#7b7979",
+                        "on-background": "#e5e2e1",
+                        "on-tertiary-fixed": "#1d1b1a",
+                        "on-secondary-container": "#b4b5b5",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "background": "#141313",
+                        "tertiary-container": "#0b0a09",
+                        "surface": "#141313",
+                        "inverse-primary": "#5f5e5e",
+                        "surface-container": "#201f1f",
+                        "primary-container": "#0a0a0a",
+                        "surface-container-low": "#1c1b1b",
+                        "on-primary": "#313030",
+                        "surface-variant": "#353434",
+                        "surface-container-lowest": "#0e0e0e",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-primary-fixed": "#1c1b1b",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-error": "#690005",
+                        "primary": "#c9c6c5",
+                        "secondary": "#c6c6c7",
+                        "outline": "#8e9192",
+                        "error-container": "#93000a",
+                        "surface-dim": "#141313",
+                        "on-tertiary-container": "#7c7977",
+                        "on-tertiary": "#32302f",
+                        "on-primary-fixed-variant": "#474646",
+                        "tertiary-fixed-dim": "#cac6c3",
+                        "secondary-container": "#454747",
+                        "on-secondary-fixed-variant": "#454747",
+                        "surface-tint": "#c9c6c5",
+                        "tertiary": "#cac6c3",
+                        "inverse-surface": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "outline-variant": "#444748",
+                        "on-secondary": "#2f3131",
+                        "primary-fixed-dim": "#c9c6c5",
+                        "error": "#ffb4ab",
+                        "surface-bright": "#3a3939",
+                        "on-surface": "#e5e2e1",
+                        "surface-container-high": "#2b2a2a",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "lg": "48px",
+                        "base": "4px",
+                        "sm": "16px",
+                        "md": "24px",
+                        "gutter": "24px",
+                        "margin": "32px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Geist", "sans-serif"],
+                        "label-sm": ["JetBrains Mono", "monospace"],
+                        "body-md": ["Geist", "sans-serif"],
+                        "headline-lg-mobile": ["Geist", "sans-serif"],
+                        "headline-lg": ["Geist", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom Geist Font Fallback */
+        @font-face {
+            font-family: 'Geist';
+            src: local('System-ui'), local('-apple-system'), local('BlinkMacSystemFont'), local('Segoe UI'), local('Roboto'), local('Helvetica Neue'), local('Arial'), local('sans-serif');
+        }
+        
+        /* Grid Background Pattern */
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-move 20s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
+        }
+
+        /* Abstract Glow Background */
+        .bg-glow-abstract {
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.1) 25%, transparent 60%);
+        }
+
+        /* Input Focus Glow */
+        .input-glow:focus {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+            border-color: #FFFFFF;
+        }
+        
+        /* Gradient CTA */
+        .bg-cta-gradient {
+            background: linear-gradient(135deg, #e5e2e1 0%, #c9c6c5 100%);
+            color: #0A0A0A;
+        }
+        .bg-cta-gradient:hover {
+            box-shadow: 0 0 20px rgba(229, 226, 225, 0.3);
+        }
+
+        /* Feature Card Gradient Border */
+        .feature-border-top {
+            position: relative;
+        }
+        .feature-border-top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-grid-pattern aspect-video w-full max-w-[1920px] mx-auto">
+<!-- Ambient Glow Background -->
+<div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+<div class="w-[800px] h-[800px] bg-glow-abstract rounded-full mix-blend-screen opacity-70"></div>
+</div>
+<!-- Main Container -->
+<main class="relative z-10 w-full max-w-[440px] px-sm flex flex-col items-center">
+<!-- Prominent Logo -->
+<div class="flex items-center justify-center gap-xs mb-lg">
+<span class="material-symbols-outlined text-[48px] text-primary" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<h1 class="font-display-lg text-display-lg tracking-tighter font-bold">Adverto</h1>
+</div>
+<!-- Auth Card -->
+<div class="relative w-full">
+<div class="absolute -inset-[2px] rounded-xl bg-gradient-to-r from-[#3b82f6] to-[#8b5cf6] z-[-1] opacity-75 blur-[1px]"></div>
+<div class="bg-surface-container-low/80 backdrop-blur-xl border border-outline-variant/30 rounded-xl shadow-[0_0_40px_rgba(0,0,0,0.5)] feature-border-top overflow-hidden">
+<div class="p-margin">
+<!-- Header -->
+<div class="text-center mb-md">
+<p class="font-body-md text-body-md text-on-surface-variant">We'll email you a secure link to sign in instantly.</p>
+</div>
+<!-- Form -->
+<form class="space-y-sm">
+<div>
+<label class="sr-only" for="email">Email Address</label>
+<input class="w-full bg-surface-container border border-outline-variant/50 rounded-lg px-md py-sm font-label-sm text-label-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none input-glow transition-all duration-300" id="email" placeholder="name@company.com" type="email"/>
+</div>
+<button class="w-full bg-cta-gradient rounded-lg py-sm px-md font-label-sm text-label-sm uppercase tracking-widest font-bold mt-md transition-all duration-300 flex items-center justify-center gap-xs" type="submit">
+                        Send Magic Link <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</form>
+</div>
+<!-- Footer Links -->
+<div class="bg-surface-container-lowest/50 backdrop-blur-sm border-t border-outline-variant/30 p-md flex items-center justify-center">
+<a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-base" href="#">
+<span class="material-symbols-outlined text-[14px]">arrow_back</span>
+                    Back to Home
+                </a>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -19,8 +19,11 @@ export async function GET(request: NextRequest) {
       // redirect user to specified redirect URL or root of app
       return NextResponse.redirect(new URL(`/${next.slice(1)}`, request.url))
     }
+    
+    // Redirect with the exact error message from Supabase
+    return NextResponse.redirect(new URL(`/auth?error=${encodeURIComponent(error.message)}`, request.url))
   }
 
-  // redirect the user to an error page with some instructions
-  return NextResponse.redirect(new URL('/auth?error=could_not_verify', request.url))
+  // If token_hash or type is missing (e.g. old email template using hash fragments)
+  return NextResponse.redirect(new URL('/auth?error=missing_token_or_type', request.url))
 }

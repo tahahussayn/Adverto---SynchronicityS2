@@ -90,14 +90,7 @@ body {
   background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-violet));
 }
 
-\n
-        body {
-            background-color: #0A0A0A;
-            color: #FFFFFF;
-            font-family: 'Geist', sans-serif;
-            overflow-x: hidden;
-        }
-        
+
         /* Glassmorphism Utilities */
         .glass-panel {
             background: rgba(17, 17, 17, 0.7);
@@ -155,4 +148,48 @@ body {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-    
+
+        /* Stitch MCP Auth Design Classes */
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-move 20s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
+        }
+
+        .bg-glow-abstract {
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.1) 25%, transparent 60%);
+        }
+
+        .input-glow:focus {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+            border-color: #FFFFFF;
+        }
+        
+        .bg-cta-gradient {
+            background: linear-gradient(135deg, #e5e2e1 0%, #c9c6c5 100%);
+            color: #0A0A0A;
+        }
+        .bg-cta-gradient:hover {
+            box-shadow: 0 0 20px rgba(229, 226, 225, 0.3);
+        }
+
+        .feature-border-top {
+            position: relative;
+        }
+        .feature-border-top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
