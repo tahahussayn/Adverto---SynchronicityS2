@@ -1,7 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
-import CampaignTabNav from "@/components/CampaignTabNav";
-import CampaignSideNav from "@/components/CampaignSideNav";
 import CreativesClient from "@/components/CreativesClient";
 
 export default async function CreativesPage({ params }: { params: Promise<{ id: string }> }) {
@@ -20,12 +18,8 @@ export default async function CreativesPage({ params }: { params: Promise<{ id: 
   if (!campaign) return redirect("/campaigns");
 
   return (
-    <div className="h-screen flex flex-col bg-base-100 overflow-hidden">
-      <CampaignTabNav campaignId={id} campaignName={campaign.name} />
-      <div className="flex flex-1 overflow-hidden">
-        <CampaignSideNav campaignId={id} />
-        <CreativesClient campaignId={id} />
-      </div>
+    <div className="flex-1 flex flex-col h-full relative z-10 w-full overflow-hidden">
+      <CreativesClient campaignId={id} />
     </div>
   );
 }

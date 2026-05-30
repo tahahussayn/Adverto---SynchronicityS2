@@ -31,16 +31,13 @@ export default async function OptimizePage({ params }: { params: { id: string } 
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 font-[Inter] p-8">
-      <div className="max-w-3xl mx-auto space-y-8">
+    <div className="flex-1 flex flex-col p-8 overflow-y-auto w-full">
+      <div className="max-w-3xl mx-auto space-y-8 w-full">
         
         {/* Header */}
-        <div className="flex items-center gap-4 border-b border-slate-800 pb-6">
-          <Link href={`/campaigns/${params.id}`} className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-          </Link>
+        <div className="flex items-center gap-4 pb-2">
           <div>
-            <h1 className="text-2xl font-bold text-slate-100">{campaign.name} Optimization Log</h1>
+            <h1 className="text-2xl font-bold text-slate-100">Optimization Log</h1>
             <p className="text-slate-400 text-sm mt-1">Autonomous actions taken by the 24h cron loop.</p>
           </div>
         </div>

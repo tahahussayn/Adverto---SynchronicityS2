@@ -6,10 +6,6 @@ import { Send, Image, LayoutGrid, Video, Mic, Clapperboard, Paperclip, X, Sparkl
 
 const FORMATS = [
   { label: "Static", icon: Image },
-  { label: "Carousel", icon: LayoutGrid },
-  { label: "UGC", icon: Mic },
-  { label: "Demo", icon: Clapperboard },
-  { label: "Motion", icon: Video },
 ];
 
 const ASPECT_RATIOS = ["1:1", "4:5", "9:16", "16:9"];
@@ -283,7 +279,7 @@ export default function GenerateClient({
       {/* Creative detail modal */}
       {selected && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
           onClick={() => setSelected(null)}
         >
           <div
@@ -353,33 +349,33 @@ export default function GenerateClient({
       )}
 
       {/* Floating prompt bar — pinned to bottom */}
-      <div className="absolute bottom-0 left-0 right-0 p-4">
-        <div className="max-w-3xl mx-auto bg-base-300/80 backdrop-blur-md border border-base-300 rounded-2xl shadow-xl overflow-hidden">
+      <div className="absolute bottom-0 left-0 right-0 p-lg pb-xl">
+        <div className="max-w-3xl mx-auto glass-panel bg-surface-container-lowest/80 backdrop-blur-xl border border-outline-variant rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.5)] overflow-hidden">
 
           {/* Reference images preview */}
           {referenceImages.length > 0 && (
-            <div className="flex items-center gap-2 px-4 pt-3 flex-wrap">
+            <div className="flex items-center gap-sm px-md pt-md flex-wrap">
               {referenceImages.map((img, i) => (
-                <div key={i} className="relative shrink-0">
+                <div key={i} className="relative shrink-0 group">
                   <img
                     src={img.previewUrl}
                     alt="reference"
-                    className="w-10 h-10 rounded-lg object-cover border border-base-300"
+                    className="w-12 h-12 rounded-lg object-cover border border-outline-variant"
                   />
                   <button
                     onClick={() => removeImage(i)}
-                    className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-error text-white flex items-center justify-center"
+                    className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-error text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg"
                   >
-                    <X className="w-2.5 h-2.5" />
+                    <X className="w-3 h-3" />
                   </button>
                 </div>
               ))}
-              <span className="text-xs text-base-content/40">{referenceImages.length}/4</span>
+              <span className="text-xs font-label-sm text-on-surface-variant uppercase tracking-widest ml-1">{referenceImages.length}/4</span>
             </div>
           )}
 
           {/* Prompt input row */}
-          <div className="flex items-center gap-2 px-3 py-2">
+          <div className="flex items-end gap-sm px-md py-sm">
             <input
               ref={fileInputRef}
               type="file"
@@ -392,7 +388,7 @@ export default function GenerateClient({
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="btn btn-ghost btn-sm btn-square shrink-0 text-base-content/40 hover:text-base-content"
+                className="w-9 h-9 shrink-0 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors mb-0.5"
                 title="Add reference images (max 4)"
               >
                 <Paperclip className="w-4 h-4" />
@@ -404,7 +400,7 @@ export default function GenerateClient({
               onChange={(e) => setPrompt(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Describe the ad creative you want to generate..."
-              className="flex-1 bg-transparent resize-none outline-none text-sm text-base-content placeholder:text-base-content/30 py-1.5 max-h-28 min-h-[36px]"
+              className="flex-1 bg-transparent resize-none outline-none text-sm font-body-md text-on-surface placeholder:text-on-surface-variant/50 py-2.5 max-h-32 min-h-[44px]"
               rows={1}
               style={{ height: "auto" }}
               onInput={(e) => {
@@ -417,10 +413,14 @@ export default function GenerateClient({
             <button
               onClick={handleGenerate}
               disabled={!prompt.trim() || isGenerating}
-              className="btn btn-primary btn-sm gap-1.5 shrink-0 rounded-xl"
+              className={`h-9 shrink-0 px-4 rounded-full font-label-sm text-xs uppercase tracking-wider flex items-center gap-2 transition-all mb-0.5 ${
+                !prompt.trim() || isGenerating 
+                  ? 'bg-surface-container-high text-on-surface-variant cursor-not-allowed' 
+                  : 'bg-primary text-primary-container shadow-[0_0_15px_rgba(14,165,233,0.3)] hover:scale-95'
+              }`}
             >
               {isGenerating ? (
-                <span className="loading loading-spinner loading-xs" />
+                <span className="material-symbols-outlined text-[16px] animate-spin">refresh</span>
               ) : (
                 <Send className="w-3.5 h-3.5" />
               )}
@@ -429,14 +429,18 @@ export default function GenerateClient({
           </div>
 
           {/* Options row */}
-          <div className="flex items-center gap-3 px-4 pb-3 pt-0.5 border-t border-base-300/50">
+          <div className="flex items-center gap-md px-md pb-sm pt-xs border-t border-outline-variant/30">
             {/* Format */}
-            <div className="flex gap-1 overflow-x-auto">
+            <div className="flex gap-2 overflow-x-auto">
               {FORMATS.map(({ label, icon: Icon }) => (
                 <button
                   key={label}
                   onClick={() => setFormat(label)}
-                  className={`btn btn-xs gap-1 rounded-full shrink-0 ${format === label ? "btn-primary" : "btn-ghost opacity-50 hover:opacity-100"}`}
+                  className={`px-3 py-1 rounded-full font-label-sm text-[10px] uppercase tracking-wider flex items-center gap-1.5 transition-colors shrink-0 ${
+                    format === label 
+                      ? "bg-primary/10 text-primary border border-primary/20" 
+                      : "bg-surface-container-high text-on-surface-variant border border-transparent hover:text-on-surface"
+                  }`}
                 >
                   <Icon className="w-3 h-3" />
                   {label}
@@ -444,15 +448,19 @@ export default function GenerateClient({
               ))}
             </div>
 
-            <div className="w-px h-4 bg-base-content/10 shrink-0" />
+            <div className="w-px h-4 bg-outline-variant/50 shrink-0" />
 
             {/* Aspect ratio */}
-            <div className="flex gap-1 shrink-0">
+            <div className="flex gap-2 shrink-0">
               {ASPECT_RATIOS.map((ar) => (
                 <button
                   key={ar}
                   onClick={() => setAspectRatio(ar)}
-                  className={`btn btn-xs rounded-full ${aspectRatio === ar ? "btn-neutral" : "btn-ghost opacity-50 hover:opacity-100"}`}
+                  className={`px-3 py-1 rounded-full font-label-sm text-[10px] uppercase tracking-wider transition-colors ${
+                    aspectRatio === ar 
+                      ? "bg-surface-container-highest text-on-surface border border-outline-variant" 
+                      : "text-on-surface-variant border border-transparent hover:text-on-surface hover:bg-surface-container-high"
+                  }`}
                 >
                   {ar}
                 </button>

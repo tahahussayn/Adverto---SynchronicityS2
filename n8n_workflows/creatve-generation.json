@@ -94,7 +94,7 @@
                     "parameters": []
                 },
                 "specifyBody": "json",
-                "jsonBody": "={{ JSON.stringify({ version: 'bytedance/seedream-5-lite', input: Object.assign({ prompt: $json.image_prompt, size: '2K', aspect_ratio: $('Webhook').item.json.body.aspect_ratio || '1:1', output_format: 'png' }, $('Webhook').item.json.body.reference_image_url ? { image_input: [$('Webhook').item.json.body.reference_image_url] } : {}) }) }}",
+                "jsonBody": "={{ JSON.stringify({ version: 'nanobanana/nanobanana-2', input: Object.assign({ prompt: $json.image_prompt, size: '2K', aspect_ratio: $('Webhook').item.json.body.aspect_ratio || '1:1', output_format: 'png' }, $('Webhook').item.json.body.reference_image_url ? { image_input: [$('Webhook').item.json.body.reference_image_url] } : {}) }) }}",
                 "options": {}
             },
             "id": "1a2b3c4d-0005-0005-0005-000000000005",

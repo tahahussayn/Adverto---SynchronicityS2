@@ -5,6 +5,7 @@ import Link from "next/link";
 import { DollarSign, TrendingUp, Target, MousePointer2, Zap, RefreshCw, Check, ArrowLeft, ArrowRight, Bell, HelpCircle } from "lucide-react";
 
 export default function CampaignOverviewClient({ campaign, metrics }: { campaign: any, metrics: any }) {
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [optEnabled, setOptEnabled] = useState(campaign.status === "optimizing");
   const [isTogglingOpt, setIsTogglingOpt] = useState(false);
   const [brief, setBrief] = useState<string>(campaign.brief ?? "");
@@ -65,31 +66,10 @@ export default function CampaignOverviewClient({ campaign, metrics }: { campaign
 
   return (
     <>
-      {/* TopNavBar (Shared Component Context) */}
-      <header className="bg-background/80 backdrop-blur-xl text-primary font-body-md text-body-md docked full-width top-0 border-b border-outline-variant flat no shadows flex justify-between items-center w-full px-md h-16 sticky z-50">
-        {/* Breadcrumbs / Context */}
-        <div className="flex items-center gap-sm text-on-surface-variant text-sm">
-          <Link href="/campaigns" className="material-symbols-outlined text-[18px] cursor-pointer active:scale-95 hover:text-primary transition-colors duration-200">arrow_back</Link>
-          <Link href="/campaigns" className="cursor-pointer hover:text-on-surface transition-colors">Campaigns</Link>
-          <span className="text-outline-variant">/</span>
-          <span className="text-on-surface font-medium">{campaign.name}</span>
-        </div>
-        {/* Actions */}
-        <div className="flex items-center gap-md">
-          <div className="flex items-center gap-sm">
-            <span className="material-symbols-outlined cursor-pointer active:scale-95 text-on-surface-variant hover:text-primary transition-colors duration-200">notifications</span>
-            <span className="material-symbols-outlined cursor-pointer active:scale-95 text-on-surface-variant hover:text-primary transition-colors duration-200">help</span>
-          </div>
-          <Link href="/campaigns/new" className="bg-on-surface text-primary-container px-4 py-2 rounded font-label-sm text-label-sm uppercase hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] transition-all cursor-pointer active:scale-95">
-            Create Campaign
-          </Link>
-        </div>
-      </header>
-
       {/* Split Pane Layout */}
       <main className="flex-1 flex overflow-hidden">
         {/* Inner Left Sidebar (Settings/Metrics) */}
-        <aside className="w-[380px] bg-surface-container-lowest/50 glass-panel border-r border-outline-variant overflow-y-auto flex flex-col">
+        <aside className={`${isSidebarCollapsed ? 'hidden' : 'flex'} w-[380px] shrink-0 bg-surface-container-lowest/50 glass-panel border-r border-outline-variant overflow-y-auto flex-col transition-all`}>
           {/* Campaign Header */}
           <div className="p-md border-b border-outline-variant/50">
             <div className="font-label-sm text-label-sm text-on-surface-variant uppercase mb-2">Campaign</div>
@@ -183,9 +163,20 @@ export default function CampaignOverviewClient({ campaign, metrics }: { campaign
         </aside>
         
         {/* Main Canvas (Ad Structure) */}
-        <section className="flex-1 flex flex-col relative bg-transparent p-md overflow-y-auto">
+        <section className="flex-1 flex flex-col relative bg-transparent p-md overflow-y-auto min-w-0">
           <div className="flex justify-between items-center mb-md pb-sm border-b border-outline-variant/30">
-            <h3 className="font-headline-lg text-[20px] text-on-surface">Ad Structure</h3>
+            <div className="flex items-center gap-sm">
+              <button 
+                onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)} 
+                className="p-1 rounded hover:bg-surface-container-high transition-colors text-on-surface-variant hover:text-on-surface flex items-center justify-center border border-transparent hover:border-outline-variant"
+                title={isSidebarCollapsed ? "Show Metrics Panel" : "Hide Metrics Panel"}
+              >
+                <span className="material-symbols-outlined text-[20px]">
+                  {isSidebarCollapsed ? "right_panel_open" : "left_panel_close"}
+                </span>
+              </button>
+              <h3 className="font-headline-lg text-[20px] text-on-surface">Ad Structure</h3>
+            </div>
             <button onClick={fetchAdStructure} disabled={structureLoading} className="flex items-center gap-xs text-sm text-on-surface-variant hover:text-on-surface transition-colors bg-surface-container-high px-3 py-1.5 rounded border border-outline-variant">
               <span className={`material-symbols-outlined text-[16px] ${structureLoading ? 'animate-spin' : ''}`}>refresh</span>
               Refresh from Meta

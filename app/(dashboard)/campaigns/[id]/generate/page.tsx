@@ -1,7 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
-import CampaignTabNav from "@/components/CampaignTabNav";
-import CampaignSideNav from "@/components/CampaignSideNav";
 import GenerateClient from "@/components/GenerateClient";
 
 export default async function GeneratePage({ params }: { params: Promise<{ id: string }> }) {
@@ -24,17 +22,13 @@ export default async function GeneratePage({ params }: { params: Promise<{ id: s
     .join(" — ");
 
   return (
-    <div className="h-screen flex flex-col bg-base-100 overflow-hidden">
-      <CampaignTabNav campaignId={id} campaignName={campaign.name} />
-      <div className="flex flex-1 overflow-hidden">
-        <CampaignSideNav campaignId={id} />
-        <GenerateClient
-          campaignId={id}
-          campaignName={campaign.name}
-          campaignDesc={campaignDesc}
-          brief={campaign.brief ?? ""}
-        />
-      </div>
+    <div className="flex-1 flex flex-col h-full w-full overflow-hidden">
+      <GenerateClient
+        campaignId={id}
+        campaignName={campaign.name}
+        campaignDesc={campaignDesc}
+        brief={campaign.brief ?? ""}
+      />
     </div>
   );
 }

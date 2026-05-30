@@ -21,8 +21,8 @@ export default function Home() {
           </nav>
           {/* Actions */}
           <div className="flex items-center gap-md">
-            <a className="font-label-sm text-label-sm text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 hidden sm:block" href="#">Login</a>
-            <a className="font-label-sm text-label-sm bg-white text-[#0A0A0A] px-6 py-2 rounded font-bold hover:scale-95 duration-100 transition-transform glow-accent-hover" href="#">Start Free Trial</a>
+            <Link className="font-label-sm text-label-sm text-on-surface-variant font-bold hover:text-white transition-colors duration-200 hidden sm:block" href="/auth">Login</Link>
+            <Link className="font-label-sm text-label-sm bg-white text-black px-6 py-2 rounded-full font-bold hover:scale-95 hover:bg-gray-100 duration-200 transition-all shadow-[0_0_15px_rgba(255,255,255,0.15)]" href="/auth">Start Free Trial</Link>
           </div>
         </div>
       </header>
@@ -46,15 +46,20 @@ export default function Home() {
           <p className="font-body-md text-body-md md:text-xl text-on-surface-variant max-w-2xl mb-xl">
             Enter a prompt and a product URL. Adverto’s autonomous AI generates, publishes, and optimizes high-converting Meta ads 24/7.
           </p>
-          {/* Auth Card */}
-          <div className="glass-panel-heavy rounded-xl p-md w-full max-w-[384px] mx-auto flex flex-col gap-4 relative glow-accent mt-8">
-            {/* Top Decoration */}
-            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-electric-blue to-violet-accent rounded-t-xl opacity-80"></div>
-
-            <Link href="/auth" className="w-full bg-[#161616] border border-[#333] text-white font-label-sm font-bold py-3 rounded-lg hover:bg-[#222] transition-colors flex items-center justify-center gap-2 group">
-              <span className="material-symbols-outlined text-[18px] text-outline-variant group-hover:text-white transition-colors">mail</span>
-              Continue with Magic Link
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 w-full">
+            <Link href="/auth" className="bg-white text-black font-body-md font-bold text-lg px-8 py-4 rounded-full hover:bg-gray-100 hover:scale-105 transition-all flex items-center justify-center gap-2 group shadow-[0_0_40px_rgba(255,255,255,0.25)] w-full sm:w-auto">
+              Login / Signup
+              <span className="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </Link>
+            <a href="#how-it-works" className="bg-surface-container-high text-white border border-outline-variant font-body-md font-bold text-lg px-8 py-4 rounded-full hover:bg-surface-container-highest hover:scale-105 transition-all flex items-center justify-center gap-2 w-full sm:w-auto">
+              See How It Works
+            </a>
+          </div>
+          
+          <div className="mt-6 flex items-center justify-center gap-4 text-on-surface-variant/70 text-sm font-label-sm">
+            <span className="flex items-center gap-1.5"><span className="material-symbols-outlined text-[16px] text-green-500">check_circle</span> No credit card required</span>
+            <span className="flex items-center gap-1.5"><span className="material-symbols-outlined text-[16px] text-green-500">check_circle</span> Set up in 2 minutes</span>
           </div>
         </section>
         {/* Section 2: Product Showcase (Dashboard Mockup) */}

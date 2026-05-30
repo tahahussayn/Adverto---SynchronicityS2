@@ -91,97 +91,103 @@ export default function CreativesClient({ campaignId }: { campaignId: string }) 
   });
 
   return (
-    <div className="flex-1 flex flex-col overflow-hidden">
+    <div className="flex-1 flex flex-col overflow-hidden w-full">
       {/* Filter bar */}
-      <div className="px-6 py-3 bg-base-200 border-b border-base-300 flex items-center gap-2">
+      <div className="px-md py-sm bg-surface-container-lowest/30 border-b border-outline-variant/30 flex items-center gap-2 w-full">
         {FILTERS.map((f) => (
           <button
             key={f}
             onClick={() => setFilter(f)}
-            className={`btn btn-xs rounded-full ${filter === f ? "btn-primary" : "btn-ghost"}`}
+            className={`px-3 py-1.5 rounded-full font-label-sm text-[10px] uppercase tracking-wider transition-colors flex items-center gap-1.5 ${
+              filter === f 
+                ? "bg-primary/10 text-primary border border-primary/20" 
+                : "text-on-surface-variant border border-transparent hover:text-on-surface hover:bg-surface-container-high"
+            }`}
           >
             {f}
             {f === "PENDING" && mapped.filter((c) => c.status === "pending_approval").length > 0 && (
-              <span className="badge badge-xs badge-warning ml-1">
+              <span className="px-1.5 py-0.5 rounded text-[9px] bg-[#422B00] text-[#FFB300] border border-[#664200]">
                 {mapped.filter((c) => c.status === "pending_approval").length}
               </span>
             )}
           </button>
         ))}
-        <span className="ml-auto text-xs text-base-content/40 font-bold">{filtered.length} creatives</span>
+        <span className="ml-auto font-label-sm text-[10px] uppercase tracking-widest text-on-surface-variant">
+          {filtered.length} creatives
+        </span>
       </div>
 
       {/* Grid */}
-      <div className="flex-1 overflow-y-auto p-6">
+      <div className="flex-1 overflow-y-auto p-lg w-full">
         {filtered.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-full gap-3 text-base-content/30">
-            <LayoutGrid className="w-10 h-10" />
-            <span className="font-bold">No creatives found</span>
+          <div className="flex flex-col items-center justify-center h-full gap-3 text-on-surface-variant font-body-md select-none">
+            <LayoutGrid className="w-10 h-10 opacity-50" />
+            <span className="font-label-sm uppercase tracking-wider text-xs">No creatives found</span>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-md">
             {filtered.map((creative) => {
               const FormatIcon = FORMAT_ICON[creative.format_type] ?? Image;
               return (
-                <div key={creative.id} className="bg-base-200 rounded-2xl border border-base-300 overflow-hidden flex flex-col hover:border-primary/40 transition-colors">
+                <div key={creative.id} className="glass-panel bg-surface-container-lowest/50 rounded-2xl border border-outline-variant overflow-hidden flex flex-col hover:border-primary/40 transition-colors shadow-lg">
                   {/* Image */}
-                  <div className="aspect-square bg-base-300 relative">
+                  <div className="aspect-square bg-surface-container-low relative">
                     {creative.image_url ? (
-                      <img src={creative.image_url} alt="" className="w-full h-full object-cover" />
+                      <img src={creative.image_url} alt="" className="w-full h-full object-cover border-b border-outline-variant" />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-base-content/20">
+                      <div className="w-full h-full flex items-center justify-center text-on-surface-variant/30">
                         <FormatIcon className="w-8 h-8" />
                       </div>
                     )}
-                    <span className="absolute top-2 left-2 badge badge-xs bg-base-100/80 text-base-content gap-1">
+                    <span className="absolute top-2 left-2 px-2 py-1 rounded bg-surface/80 backdrop-blur-md text-on-surface text-[10px] font-bold uppercase border border-outline-variant flex items-center gap-1 shadow-md">
                       <FormatIcon className="w-2.5 h-2.5" />
                       {creative.format_type}
                     </span>
-                    <span className={`absolute top-2 right-2 badge badge-xs ${STATUS_BADGE[creative.status] ?? "badge-neutral"}`}>
+                    <span className="absolute top-2 right-2 px-2 py-1 rounded bg-surface-container-highest/80 backdrop-blur-md text-on-surface text-[10px] font-bold uppercase border border-outline-variant shadow-md">
                       {creative.status === "pending_approval" ? "pending" : creative.status}
                     </span>
                   </div>
 
                   {/* Info */}
-                  <div className="p-3 flex flex-col gap-2 flex-1">
+                  <div className="p-4 flex flex-col gap-2 flex-1 bg-surface-container-lowest/30">
                     {editingId === creative.id ? (
-                      <div className="flex flex-col gap-1.5">
+                      <div className="flex flex-col gap-2">
                         <input
                           ref={headlineRef}
                           value={editDraft.headline}
                           onChange={(e) => setEditDraft((d) => ({ ...d, headline: e.target.value }))}
                           placeholder="Headline"
-                          className="input input-xs input-bordered w-full font-bold"
+                          className="bg-surface-container-high border border-outline-variant rounded px-2 py-1 text-xs font-bold text-on-surface outline-none focus:border-primary transition-colors w-full"
                           maxLength={40}
                         />
                         <textarea
                           value={editDraft.body_copy}
                           onChange={(e) => setEditDraft((d) => ({ ...d, body_copy: e.target.value }))}
                           placeholder="Body copy"
-                          className="textarea textarea-xs textarea-bordered w-full text-[11px] resize-none"
+                          className="bg-surface-container-high border border-outline-variant rounded px-2 py-1 text-[11px] text-on-surface outline-none focus:border-primary transition-colors w-full resize-none"
                           rows={2}
                           maxLength={125}
                         />
-                        <div className="flex gap-1 mt-0.5">
-                          <button onClick={() => saveEdit(creative.id)} className="btn btn-xs btn-success gap-1 flex-1">
+                        <div className="flex gap-1 mt-1">
+                          <button onClick={() => saveEdit(creative.id)} className="flex-1 py-1 rounded bg-[#163321] text-[#4ADE80] border border-[#214E34] text-[10px] font-bold uppercase tracking-wider flex items-center justify-center gap-1 hover:bg-[#214E34]">
                             <Check className="w-3 h-3" /> Save
                           </button>
-                          <button onClick={cancelEdit} className="btn btn-xs btn-ghost gap-1">
+                          <button onClick={cancelEdit} className="w-8 py-1 rounded bg-surface-container-high text-on-surface-variant hover:text-on-surface flex items-center justify-center border border-outline-variant transition-colors">
                             <X className="w-3 h-3" />
                           </button>
                         </div>
                       </div>
                     ) : (
-                      <div className="group relative">
-                        <p className="font-bold text-xs text-base-content leading-tight line-clamp-2">
-                          {creative.headline || <span className="text-base-content/30 italic">No headline</span>}
+                      <div className="group relative pr-4">
+                        <p className="font-bold text-sm text-on-surface leading-tight line-clamp-2">
+                          {creative.headline || <span className="text-on-surface-variant italic font-normal">No headline</span>}
                         </p>
-                        <p className="text-[11px] text-base-content/50 line-clamp-2 mt-0.5">
+                        <p className="text-[11px] text-on-surface-variant line-clamp-2 mt-1">
                           {creative.body_copy || <span className="italic">No copy</span>}
                         </p>
                         <button
                           onClick={() => startEdit(creative)}
-                          className="absolute top-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity btn btn-xs btn-ghost p-0.5"
+                          className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 transition-opacity p-1.5 rounded-full text-on-surface-variant hover:text-primary hover:bg-primary/10"
                           title="Edit headline & copy"
                         >
                           <Pencil className="w-3 h-3" />
@@ -190,21 +196,21 @@ export default function CreativesClient({ campaignId }: { campaignId: string }) 
                     )}
 
                     {/* Actions */}
-                    <div className="mt-auto pt-2">
+                    <div className="mt-auto pt-4">
                       {creative.status === "pending_approval" && (
-                        <div className="grid grid-cols-2 gap-1.5">
+                        <div className="grid grid-cols-2 gap-2">
                           <button
                             onClick={() => handleStatusUpdate(creative.id, "approved")}
-                            className="btn btn-xs btn-success gap-1"
+                            className="py-1.5 rounded bg-[#163321] text-[#4ADE80] border border-[#214E34] text-[10px] font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-[#214E34] transition-colors"
                           >
-                            <CheckCircle2 className="w-3 h-3" />
+                            <CheckCircle2 className="w-3.5 h-3.5" />
                             Approve
                           </button>
                           <button
                             onClick={() => handleStatusUpdate(creative.id, "rejected")}
-                            className="btn btn-xs btn-error btn-outline gap-1"
+                            className="py-1.5 rounded bg-error/10 text-error border border-error/20 text-[10px] font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-error/20 transition-colors"
                           >
-                            <XCircle className="w-3 h-3" />
+                            <XCircle className="w-3.5 h-3.5" />
                             Reject
                           </button>
                         </div>
@@ -212,18 +218,18 @@ export default function CreativesClient({ campaignId }: { campaignId: string }) 
                       {creative.status === "approved" && (
                         <button
                           onClick={() => handlePublish(creative.id)}
-                          className="btn btn-xs btn-primary w-full gap-1"
+                          className="w-full py-1.5 rounded bg-primary text-primary-container font-label-sm text-[10px] uppercase tracking-wider flex items-center justify-center gap-1.5 hover:scale-95 transition-all shadow-[0_0_15px_rgba(14,165,233,0.3)]"
                         >
-                          <Send className="w-3 h-3" />
+                          <Send className="w-3.5 h-3.5" />
                           Publish to Meta
                         </button>
                       )}
                       {creative.status === "published" && (
                         <button
                           onClick={() => handleStatusUpdate(creative.id, "paused")}
-                          className="btn btn-xs btn-ghost w-full gap-1 text-base-content/50"
+                          className="w-full py-1.5 rounded bg-surface-container-high border border-outline-variant text-on-surface-variant font-label-sm text-[10px] uppercase tracking-wider flex items-center justify-center gap-1.5 hover:text-on-surface transition-colors"
                         >
-                          <Pause className="w-3 h-3" />
+                          <Pause className="w-3.5 h-3.5" />
                           Pause
                         </button>
                       )}
