@@ -308,67 +308,91 @@ export default function Home() {
 {/* Footer Component */}
 <footer className="bg-surface-container-lowest w-full pt-32 pb-lg border-t border-surface-container-highest relative overflow-hidden">
 {/* Enhanced CTA Section */}
-<div className="absolute inset-0 bg-radial-glow opacity-50 pointer-events-none z-0"></div>
-<div className="max-w-4xl mx-auto text-center px-md mb-32 relative z-10">
-<h2 className="font-display-lg text-[40px] md:text-[56px] font-bold text-white mb-6 tracking-tight">Ready to fire your ad agency?</h2>
-<p className="font-body-md text-on-surface-variant text-lg mb-10">Join 500+ D2C brands scaling their ROAS on autopilot.</p>
-<a className="inline-flex items-center gap-2 bg-white text-[#0A0A0A] px-8 py-4 rounded-lg font-label-sm font-bold hover:bg-gray-200 transition-colors glow-accent-hover group" href="#">
-        Deploy your first campaign
-        <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">rocket_launch</span>
-</a>
-</div>
-<div className="flex flex-col md:flex-row justify-between items-center px-md max-w-7xl mx-auto relative z-10 pt-8 border-t border-[#222222]"><div className="grid grid-cols-2 md:grid-cols-4 gap-xl mb-16">
-    <div className="col-span-2 md:col-span-1">
-        <div className="font-headline-lg text-headline-lg font-bold text-on-background flex items-center gap-2 mb-4">
-            <span className="material-symbols-outlined text-electric-blue">bolt</span> Adverto
-        </div>
-        <p className="font-body-md text-on-surface-variant text-sm max-w-xs">
-            Autonomous ad generation for modern D2C brands. Precision engineered advertising.
+<div className="absolute inset-0 bg-radial-glow opacity-30 pointer-events-none z-0"></div>
+<div className="max-w-7xl mx-auto px-8 mb-32 relative z-10 flex flex-col md:flex-row justify-between items-center gap-12">
+    <div className="text-left max-w-2xl">
+        <h2 className="text-[40px] md:text-[52px] leading-[1.1] font-bold text-white mb-6 tracking-tight">
+            Get realistic with<br />Photorealistic AI today.
+        </h2>
+        <p className="font-body-md text-on-surface-variant text-lg mb-8 max-w-lg leading-relaxed">
+            Join the waitlist and be the first one to experience photorealism at scale. Get additional 50% discount on the first 100 people.
         </p>
+        <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-6">
+                <div className="flex -space-x-4">
+                    {[1, 2, 3, 4, 5, 6].map((i) => (
+                        <img key={i} src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="avatar" className="w-12 h-12 rounded-2xl border-2 border-surface-container-lowest object-cover" />
+                    ))}
+                </div>
+                <div className="flex gap-1 text-[#FACC15]">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                        <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z"/></svg>
+                    ))}
+                </div>
+            </div>
+            <p className="text-sm text-on-surface-variant font-medium mt-1">Trusted by 27,000+ creators</p>
+        </div>
     </div>
-    <div>
-        <h4 className="font-label-sm text-white font-bold mb-6 uppercase tracking-wider">Product</h4>
-        <ul className="space-y-4 font-label-sm text-on-surface-variant">
-            <li className=""><a href="#how-it-works" className="hover:text-electric-blue transition-colors">How it Works</a></li>
-            <li className=""><a href="#integrations" className="hover:text-electric-blue transition-colors">Integrations</a></li>
-            <li className=""><a href="#" className="hover:text-electric-blue transition-colors">Pricing</a></li>
-            <li className=""><a href="#" className="hover:text-electric-blue transition-colors">Features</a></li>
-        </ul>
-    </div>
-    <div>
-        <h4 className="font-label-sm text-white font-bold mb-6 uppercase tracking-wider">Company</h4>
-        <ul className="space-y-4 font-label-sm text-on-surface-variant">
-            <li className=""><a href="#" className="hover:text-electric-blue transition-colors">About</a></li>
-            <li className=""><a href="#" className="hover:text-electric-blue transition-colors">Careers</a></li>
-            <li className=""><a href="#" className="hover:text-electric-blue transition-colors">Contact</a></li>
-            <li className=""><a href="#" className="hover:text-electric-blue transition-colors">Blog</a></li>
-        </ul>
-    </div>
-    <div>
-        <h4 className="font-label-sm text-white font-bold mb-6 uppercase tracking-wider">Legal</h4>
-        <ul className="space-y-4 font-label-sm text-on-surface-variant">
-            <li className=""><a href="#" className="hover:text-electric-blue transition-colors">Privacy Policy</a></li>
-            <li className=""><a href="#" className="hover:text-electric-blue transition-colors">Terms of Service</a></li>
-            <li className=""><a href="#" className="hover:text-electric-blue transition-colors">Security</a></li>
-        </ul>
+    <div className="flex-shrink-0 w-full md:w-auto mt-8 md:mt-0 flex justify-start md:justify-end">
+        <a className="inline-flex items-center gap-2 bg-[#2563EB] text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/20" href="#">
+            Book a call &rarr;
+        </a>
     </div>
 </div>
-<div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-[#222222] gap-md">
-    <div className="font-body-md text-on-surface-variant text-sm">
-        © 2024 Adverto AI. All rights reserved.
+<div className="px-8 max-w-7xl mx-auto relative z-10 pt-16 border-t border-[#222222]">
+    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-16">
+        <div className="col-span-2 lg:col-span-2 pr-8">
+            <div className="font-headline-lg text-headline-lg font-bold text-on-background flex items-center gap-2 mb-4">
+                <span className="material-symbols-outlined text-electric-blue">bolt</span> Adverto
+            </div>
+            <p className="font-body-md text-on-surface-variant text-sm max-w-sm leading-relaxed">
+                Autonomous ad generation for modern D2C brands. Precision engineered advertising.
+            </p>
+        </div>
+        <div>
+            <h4 className="font-label-sm text-white font-bold mb-6 uppercase tracking-wider">Product</h4>
+            <ul className="space-y-4 font-label-sm text-on-surface-variant">
+                <li><a href="#how-it-works" className="hover:text-electric-blue transition-colors">How it Works</a></li>
+                <li><a href="#integrations" className="hover:text-electric-blue transition-colors">Integrations</a></li>
+                <li><a href="#" className="hover:text-electric-blue transition-colors">Pricing</a></li>
+                <li><a href="#" className="hover:text-electric-blue transition-colors">Features</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 className="font-label-sm text-white font-bold mb-6 uppercase tracking-wider">Company</h4>
+            <ul className="space-y-4 font-label-sm text-on-surface-variant">
+                <li><a href="#" className="hover:text-electric-blue transition-colors">About</a></li>
+                <li><a href="#" className="hover:text-electric-blue transition-colors">Careers</a></li>
+                <li><a href="#" className="hover:text-electric-blue transition-colors">Contact</a></li>
+                <li><a href="#" className="hover:text-electric-blue transition-colors">Blog</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 className="font-label-sm text-white font-bold mb-6 uppercase tracking-wider">Legal</h4>
+            <ul className="space-y-4 font-label-sm text-on-surface-variant">
+                <li><a href="#" className="hover:text-electric-blue transition-colors">Privacy Policy</a></li>
+                <li><a href="#" className="hover:text-electric-blue transition-colors">Terms of Service</a></li>
+                <li><a href="#" className="hover:text-electric-blue transition-colors">Security</a></li>
+            </ul>
+        </div>
     </div>
-    <div className="flex gap-6 items-center">
-        <a href="#" className="text-on-surface-variant hover:text-white transition-colors">
-            <span className="material-symbols-outlined">brand_awareness</span>
-        </a>
-        <a href="#" className="text-on-surface-variant hover:text-white transition-colors">
-            <span className="material-symbols-outlined">groups</span>
-        </a>
-        <a href="#" className="text-on-surface-variant hover:text-white transition-colors">
-            <span className="material-symbols-outlined">terminal</span>
-        </a>
+    <div className="flex flex-col md:flex-row justify-between items-center pt-8 pb-12 border-t border-[#222222] gap-6">
+        <div className="font-body-md text-on-surface-variant text-sm">
+            © 2024 Adverto AI. All rights reserved.
+        </div>
+        <div className="flex gap-6 items-center">
+            <a href="#" className="text-on-surface-variant hover:text-white transition-colors">
+                <span className="material-symbols-outlined">brand_awareness</span>
+            </a>
+            <a href="#" className="text-on-surface-variant hover:text-white transition-colors">
+                <span className="material-symbols-outlined">groups</span>
+            </a>
+            <a href="#" className="text-on-surface-variant hover:text-white transition-colors">
+                <span className="material-symbols-outlined">terminal</span>
+            </a>
+        </div>
     </div>
-</div></div>
+</div>
 </footer>
     </div>
   );
