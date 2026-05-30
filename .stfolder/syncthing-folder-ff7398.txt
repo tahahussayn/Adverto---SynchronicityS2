@@ -1,0 +1,5 @@
+# This directory is a Syncthing folder marker.
+# Do not delete.
+
+folderID: s2ntu-qmofe
+created: 2026-05-30T13:57:46+05:30
