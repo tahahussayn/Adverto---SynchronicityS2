@@ -38,12 +38,16 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const extendedItems = Array.from({ length: 40 }).flatMap((_, setIndex) =>
-    items.map((item, itemIndex) =>
-      React.cloneElement(item, {
-        key: `card-${setIndex}-${itemIndex}`,
-        index: setIndex * items.length + itemIndex,
-      })
-    )
+    items
+      .filter((item): item is React.ReactElement<{ index?: number }> =>
+        React.isValidElement(item)
+      )
+      .map((item, itemIndex) =>
+        React.cloneElement(item, {
+          key: `card-${setIndex}-${itemIndex}`,
+          index: setIndex * items.length + itemIndex,
+        })
+      )
   );
 
   useEffect(() => {
@@ -127,9 +131,8 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                   y: 0,
                   transition: {
                     duration: 0.5,
-                    delay: 0.05 * (index % items.length), // Stagger based on original index
+                    delay: 0.05 * (index % items.length),
                     ease: "easeOut",
-                    once: true,
                   },
                 }}
                 key={item.key}
