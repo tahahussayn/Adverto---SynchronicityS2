@@ -36,7 +36,7 @@ export default function AuthPage() {
     }
     checkSession()
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event: any, session: any) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_IN' && session) {
         window.location.href = '/campaigns'
       }

@@ -12,7 +12,7 @@ import Image, { ImageProps } from "next/image";
 import { X, ArrowLeft, ArrowRight } from "lucide-react";
 
 interface CarouselProps {
-  items: React.ReactNode[];
+  items: JSX.Element[];
   initialScroll?: number;
 }
 
