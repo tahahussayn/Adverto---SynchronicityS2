@@ -335,11 +335,11 @@ export default function SettingsPage() {
               <div className="absolute top-0 left-0 w-full h-full bg-red-500/5 pointer-events-none"></div>
               <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-red-500 to-transparent"></div>
               
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-4 w-full">
                 <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center shrink-0 border border-red-500/20">
                   <span className="material-symbols-outlined text-red-500 text-2xl">warning</span>
                 </div>
-                <div>
+                <div className="flex-1 w-full min-w-0">
                   <h2 className="font-headline-lg text-2xl mb-2 text-red-500">Danger Zone</h2>
                   <p className="text-on-surface-variant mb-6 font-body-md text-sm max-w-lg leading-relaxed">
                     Once you delete your account, there is no going back. All campaigns, creatives, Meta sync settings, and brand identities will be permanently erased from our servers.

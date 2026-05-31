@@ -30,7 +30,7 @@ export default function CampaignTopNav({ campaignId, campaignName }: { campaignI
             <span className="material-symbols-outlined cursor-pointer active:scale-95 text-on-surface-variant hover:text-primary transition-colors duration-200">notifications</span>
             <span className="material-symbols-outlined cursor-pointer active:scale-95 text-on-surface-variant hover:text-primary transition-colors duration-200">help</span>
           </div>
-          <Link href="/campaigns/new" className="bg-on-surface text-surface px-4 py-2 rounded font-label-sm font-bold text-label-sm uppercase hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] transition-all cursor-pointer active:scale-95 whitespace-nowrap">
+          <Link href="/campaigns/new" className="bg-on-surface text-black px-4 py-2 rounded font-label-sm font-bold text-label-sm uppercase hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] transition-all cursor-pointer active:scale-95 whitespace-nowrap">
             Create Campaign
           </Link>
         </div>

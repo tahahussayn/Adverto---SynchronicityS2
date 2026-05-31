@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { useCreatives } from "@/hooks/useCreatives";
-import { CheckCircle2, XCircle, Send, Image, Video, LayoutGrid, Pause, Pencil, Check, X } from "lucide-react";
+import { CheckCircle2, XCircle, Send, Image, Video, LayoutGrid, Pause, Play, Pencil, Check, X } from "lucide-react";
 
 const STATUS_BADGE: Record<string, string> = {
   generating: "badge-info",
@@ -231,6 +231,15 @@ export default function CreativesClient({ campaignId }: { campaignId: string }) 
                         >
                           <Pause className="w-3.5 h-3.5" />
                           Pause
+                        </button>
+                      )}
+                      {creative.status === "paused" && (
+                        <button
+                          onClick={() => handleStatusUpdate(creative.id, "published")}
+                          className="w-full py-1.5 rounded bg-primary/10 border border-primary/30 text-primary font-label-sm text-[10px] uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-primary/20 transition-colors"
+                        >
+                          <Play className="w-3.5 h-3.5 fill-current" />
+                          Resume
                         </button>
                       )}
                     </div>

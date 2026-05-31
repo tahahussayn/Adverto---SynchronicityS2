@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${jetBrainsMono.variable} h-full antialiased dark`}
+      className={`${geistSans.variable} ${jetBrainsMono.variable} h-full antialiased dark scroll-smooth`}
     >
       <body className="min-h-full flex flex-col">
         <CursorEffect />
