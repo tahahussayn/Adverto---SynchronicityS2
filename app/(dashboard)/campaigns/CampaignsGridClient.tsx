@@ -46,7 +46,7 @@ export default function CampaignsGridClient({
           <h1 className="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-surface mb-1">Campaigns</h1>
           <p className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">{initialCampaigns.length} campaigns total</p>
         </div>
-        <Link href="/campaigns/new" className="bg-on-surface text-background font-label-sm text-label-sm px-md py-sm rounded-DEFAULT flex items-center justify-center gap-xs hover:bg-surface-tint transition-all duration-300 group hover:shadow-[0_0_15px_rgba(229,226,225,0.3)]">
+        <Link href="/campaigns/new" className="bg-on-surface text-background font-label-sm text-label-sm px-md py-sm rounded-DEFAULT flex items-center justify-center gap-xs hover:bg-surface-tint transition-all duration-300 group hover:shadow-[0_0_15px_rgba(229,226,225,0.3)] rounded-md">
           <span className="material-symbols-outlined text-[16px] transition-transform group-hover:rotate-90 duration-300">add</span>
           New Campaign
         </Link>

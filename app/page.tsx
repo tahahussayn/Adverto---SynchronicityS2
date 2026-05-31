@@ -10,7 +10,7 @@ export default function Home() {
         <div className="flex justify-between items-center px-md py-sm max-w-7xl mx-auto">
           {/* Brand */}
           <div className="font-headline-lg text-headline-lg font-bold text-on-background tracking-tighter cursor-pointer flex items-center gap-2">
-            <span className="material-symbols-outlined text-electric-blue">bolt</span>
+            <Image src="/logo.png" alt="Adverto" width={32} height={32} className="w-8 h-8 object-contain" />
             Adverto
           </div>
           {/* Navigation Links */}
@@ -332,29 +332,17 @@ export default function Home() {
             <h2 className="font-display-lg text-[40px] md:text-[52px] leading-[1.1] font-bold text-white mb-6 tracking-tight">
               Ready to fire your<br />ad agency?
             </h2>
-            <p className="font-body-md text-on-surface-variant text-lg mb-8 max-w-[500px]">
-              Join 500+ D2C brands scaling their ROAS on autopilot. Get an additional 50% discount for your first month.
+            <p className="font-body-md text-on-surface-variant text-lg max-w-[500px]">
+              Automate your creative generation and launch high-converting campaigns in minutes.
             </p>
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-6">
-                <div className="flex -space-x-4">
-                  {[1, 2, 3, 4, 5, 6].map((i) => (
-                    <img key={i} src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="avatar" className="w-12 h-12 rounded-2xl border-2 border-surface-container-lowest object-cover" />
-                  ))}
-                </div>
-                <div className="flex gap-1 text-[#FACC15]">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" /></svg>
-                  ))}
-                </div>
-              </div>
-              <p className="font-label-sm text-sm text-on-surface-variant font-medium mt-1">Trusted by 27,000+ creators</p>
-            </div>
           </div>
           <div className="flex-shrink-0 w-full md:w-auto mt-8 md:mt-0 flex justify-start md:justify-end">
-            <a className="inline-flex items-center gap-2 bg-white text-[#0A0A0A] px-8 py-4 rounded-xl font-label-sm font-bold hover:scale-95 duration-100 transition-transform glow-accent-hover shadow-lg" href="#">
-              Deploy your campaign
-              <span className="material-symbols-outlined">rocket_launch</span>
+            <a 
+              className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-electric-blue to-meta-blue text-white px-10 py-5 rounded-full font-label-sm font-bold text-lg hover:scale-105 duration-300 transition-all shadow-[0_0_30px_rgba(14,165,233,0.4)] hover:shadow-[0_0_45px_rgba(14,165,233,0.6)] border border-white/20" 
+              href="/auth"
+            >
+              Start Generating Free
+              <span className="material-symbols-outlined text-[24px]">rocket_launch</span>
             </a>
           </div>
         </div>
@@ -362,7 +350,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-16">
             <div className="col-span-2 lg:col-span-2 pr-8">
               <div className="font-headline-lg text-headline-lg font-bold text-on-background flex items-center gap-2 mb-4">
-                <span className="material-symbols-outlined text-electric-blue">bolt</span> Adverto
+                <Image src="/logo.png" alt="Adverto" width={24} height={24} className="w-6 h-6 object-contain" /> Adverto
               </div>
               <p className="font-body-md text-on-surface-variant text-sm max-w-sm leading-relaxed">
                 Autonomous ad generation for modern D2C brands. Precision engineered advertising.

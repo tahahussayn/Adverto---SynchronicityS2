@@ -26,8 +26,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Creative not found or unauthorized' }, { status: 404 });
     }
 
-    // Update status to publishing
-    await supabase.from('creatives').update({ status: 'publishing' }).eq('id', creativeId);
+    // Update status directly to published to mock the behavior for the demo
+    await supabase.from('creatives').update({ status: 'published' }).eq('id', creativeId);
 
     // Fire webhook to n8n
     const n8nUrl = process.env.N8N_PUBLISH_WEBHOOK_URL;

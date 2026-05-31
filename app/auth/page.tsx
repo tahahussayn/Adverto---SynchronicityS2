@@ -107,7 +107,7 @@ export default function AuthPage() {
       <main className="relative z-10 w-full max-w-[440px] px-sm flex flex-col items-center">
         {/* Prominent Logo */}
         <div className="flex items-center justify-center gap-xs mb-lg">
-          <span className="material-symbols-outlined text-[48px] text-electric-blue" style={{ fontVariationSettings: "'FILL' 1" }}>bolt</span>
+          <img src="/logo.png" alt="Adverto" className="w-12 h-12 object-contain" />
           <h1 className="font-display-lg text-[48px] md:text-display-lg tracking-tighter font-bold">Adverto</h1>
         </div>
         

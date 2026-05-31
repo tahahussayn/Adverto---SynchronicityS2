@@ -26,12 +26,12 @@ export default function DashboardSidebar() {
       
       {/* Brand Header */}
       <div className={`mb-xl flex items-center ${isCollapsed ? "justify-center px-0" : "px-md gap-sm"}`}>
-        <div className="w-8 h-8 rounded-md bg-primary-container flex items-center justify-center border border-outline-variant shrink-0">
-          <span className="font-bold text-primary font-label-sm">A</span>
+        <div className="w-8 h-8 flex items-center justify-center shrink-0">
+          <img src="/logo.png" alt="Adverto Logo" className="w-full h-full object-contain drop-shadow-md" />
         </div>
         {!isCollapsed && (
           <div className="overflow-hidden whitespace-nowrap">
-            <div className="font-headline-lg text-headline-lg tracking-tighter text-on-surface text-xl">Adverto AI</div>
+            <div className="font-headline-lg text-headline-lg tracking-tighter text-on-surface text-xl">Adverto</div>
             <div className="font-label-sm text-label-sm text-on-surface-variant mt-1">Precision Ads</div>
           </div>
         )}

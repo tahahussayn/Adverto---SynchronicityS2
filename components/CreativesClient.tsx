@@ -62,7 +62,7 @@ export default function CreativesClient({ campaignId }: { campaignId: string }) 
   };
 
   const handlePublish = async (id: string) => {
-    setOptimisticStatuses((prev) => ({ ...prev, [id]: "publishing" }));
+    setOptimisticStatuses((prev) => ({ ...prev, [id]: "published" }));
     try {
       const res = await fetch("/api/publish", {
         method: "POST",
@@ -215,13 +215,13 @@ export default function CreativesClient({ campaignId }: { campaignId: string }) 
                           </button>
                         </div>
                       )}
-                      {creative.status === "approved" && (
+                      {(creative.status === "approved" || creative.status === "publishing") && (
                         <button
                           onClick={() => handlePublish(creative.id)}
                           className="w-full py-1.5 rounded bg-primary text-primary-container font-label-sm text-[10px] uppercase tracking-wider flex items-center justify-center gap-1.5 hover:scale-95 transition-all shadow-[0_0_15px_rgba(14,165,233,0.3)]"
                         >
                           <Send className="w-3.5 h-3.5" />
-                          Publish to Meta
+                          {creative.status === "publishing" ? "Force Publish" : "Publish to Meta"}
                         </button>
                       )}
                       {creative.status === "published" && (
