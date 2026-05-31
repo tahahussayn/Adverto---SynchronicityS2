@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { createClient } from '@/utils/supabase/client'
+import type { AuthChangeEvent, Session } from '@supabase/supabase-js'
 
 export default function AuthPage() {
   const [email, setEmail] = useState('')
@@ -36,7 +37,7 @@ export default function AuthPage() {
     }
     checkSession()
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event: AuthChangeEvent, session: Session | null) => {
       if (event === 'SIGNED_IN' && session) {
         window.location.href = '/campaigns'
       }
